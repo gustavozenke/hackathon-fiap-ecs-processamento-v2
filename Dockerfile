@@ -26,6 +26,12 @@ ENV AWS_REGION=${AWS_REGION}
 ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
+# Adicionar uma etapa de debug para garantir que as variáveis estão setadas corretamente
+RUN echo "TESTE DE CREDENCIAIS"
+    echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" && \
+    echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" && \
+    echo "AWS_REGION=$AWS_REGION"
+
 # Expor a porta que a aplicação vai rodar
 EXPOSE 8000
 
