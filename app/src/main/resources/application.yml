@@ -1,3 +1,6 @@
+aws:
+  region: us-east-1
+
 spring:
   application:
     name: hackathon
@@ -11,11 +14,10 @@ management:
       exposure:
         include: health
 
-aws:
-  region: us-east-1
-  sqs:
-    queue: sqs-processamento
-  bucket:
-    name: bucket-hackathon-fiap-raw-videos
-    destination:
-      path: /tmp
+
+sqs:
+  queue: sqs-processamento
+bucket:
+  name: bucket-hackathon-fiap-raw-videos
+  destination:
+    path: /tmp
