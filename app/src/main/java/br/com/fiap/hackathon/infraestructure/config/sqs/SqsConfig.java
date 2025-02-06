@@ -9,7 +9,7 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
 @Configuration
 public class SqsConfig {
-    @Value("${aws.region}")
+    @Value("${spring.cloud.aws.region.static}")
     private String region;
     @Bean
     public SqsAsyncClient sqsAsyncClient() {

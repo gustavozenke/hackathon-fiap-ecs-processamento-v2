@@ -18,6 +18,7 @@ management:
 
 sqs:
   queue: sqs-processamento
+
 bucket:
   name: bucket-hackathon-fiap-raw-videos
   destination:
