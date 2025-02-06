@@ -16,19 +16,18 @@ public class S3Config {
     private String accessKey;
     @Value("${aws.secretKey}")
     private String secretKey;
-    @Bean
-    @Profile("!local")
-    public S3Client s3Client() {
-        AwsBasicCredentials awsCreds = AwsBasicCredentials.create(accessKey, secretKey);
+//    @Bean
+//    @Profile("!local")
+//    public S3Client s3Client() {
+//        AwsBasicCredentials awsCreds = AwsBasicCredentials.create(accessKey, secretKey);
+//
+//        return S3Client.builder()
+//                .region(Region.US_EAST_1)
+//                .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
+//                .build();
+//    }
 
-        return S3Client.builder()
-                .region(Region.US_EAST_1)
-                .credentialsProvider(StaticCredentialsProvider.create(awsCreds))
-                .build();
-    }
-
     @Bean
-    @Profile("local")
     public S3Client s3ClientLocal() {
         return S3Client.builder()
                 .region(Region.US_EAST_1)
