@@ -1,7 +1,8 @@
-aws:
-  region: us-east-1
-
 spring:
+  cloud:
+    aws:
+      region:
+        static: us-east-1
   application:
     name: hackathon
 
