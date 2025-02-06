@@ -9,6 +9,11 @@ RUN chmod +x mvnw || true
 RUN mvn clean package
 
 FROM eclipse-temurin:17-jre
+
+RUN apt-get update && \
+    apt-get install -y ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
