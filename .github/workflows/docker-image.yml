@@ -6,6 +6,7 @@ on:
 
 env:
   IMAGE_NAME: hackathon-fiap-processamento-video
+  AWS_REGION: us-east-1
 
 jobs:
   push_to_registry:
