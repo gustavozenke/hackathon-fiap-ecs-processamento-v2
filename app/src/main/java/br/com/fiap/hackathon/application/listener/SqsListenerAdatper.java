@@ -15,7 +15,7 @@ public class SqsListenerAdatper {
 
     private final ProcessarVideoUseCase processarVideoUseCase;
 
-    @SqsListener(value = "${aws.sqs.queue}")
+    @SqsListener(value = "${sqs.queue}")
     public void onMessage(String message) {
         try {
             log.info("Iniciando processamento");

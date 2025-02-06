@@ -20,9 +20,9 @@ import java.nio.file.Paths;
 public class S3Service {
 
     private final S3Client s3Client;
-    @Value("${aws.bucket.name}")
+    @Value("${bucket.name}")
     private String bucketName;
-    @Value("${aws.bucket.destination.path}")
+    @Value("${bucket.destination.path}")
     private String diretorioDestino;
 
     public Path download(String key) throws IOException {

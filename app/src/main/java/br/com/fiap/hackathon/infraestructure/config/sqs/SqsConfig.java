@@ -9,10 +9,8 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
 @Configuration
 public class SqsConfig {
-
     @Value("${aws.region}")
     private String region;
-
     @Bean
     public SqsAsyncClient sqsAsyncClient() {
         return SqsAsyncClient.builder()
