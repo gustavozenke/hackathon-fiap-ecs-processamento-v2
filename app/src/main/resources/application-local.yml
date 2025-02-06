@@ -6,6 +6,11 @@ spring:
   application:
     name: hackathon
 
+aws:
+  region: ${AWS_REGION:us-east-1}
+  accessKey: ${AWS_ACCESS_KEY_ID:}
+  secretKey: ${AWS_SECRET_ACCESS_KEY:}
+
 server:
   port: 8000
 
