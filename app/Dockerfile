@@ -1,23 +1,28 @@
-# Build
-FROM openjdk:17-jdk-slim AS build
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 
-COPY pom.xml mvnw ./
-COPY .mvn .mvn
-RUN ./mvnw dependency:resolve
+COPY . .
 
-COPY src src
-RUN ./mvnw package
+RUN chmod +x mvnw || true
 
-# Runtime
-FROM openjdk:17-jre-slim
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+RUN mvn clean package
+
+FROM eclipse-temurin:17-jre
 
 RUN apt-get update && \
     apt-get install -y ffmpeg && \
-    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
 
-COPY --from=builder /app/target/hackathon-*.jar app.jar
+COPY --from=build /target/*.jar app.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Expor a porta que a aplicação vai rodar
+EXPOSE 8000
+
+# Comando para rodar a aplicação
+CMD ["java", "-jar", "app.jar"]
