@@ -21,7 +21,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-COPY --from=build /target/*.jar app.jar
+COPY --from=build /app/target/hackathon-*.jar app.jar
 
 # Expor a porta que a aplicação vai rodar
 EXPOSE 8000
