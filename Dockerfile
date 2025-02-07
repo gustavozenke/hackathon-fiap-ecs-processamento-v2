@@ -1,34 +1,23 @@
-FROM maven:3.8.6-eclipse-temurin-17 AS build
+# Build
+FROM maven:3.8.6-openjdk-17 AS builder
 
 WORKDIR /app
 
-COPY app/ ./
+COPY pom.xml .
+COPY src ./src
 
-RUN chmod +x mvnw || true
+RUN mvn clean package -Pci
 
-RUN mvn clean package
-
-FROM eclipse-temurin:17-jre
+# Runtime
+FROM openjdk:17-jre-slim
 
 RUN apt-get update && \
     apt-get install -y ffmpeg && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=builder /app/target/hackathon-*.jar app.jar
 
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
-ARG SPRING_PROFILES_ACTIVE=default
-
-ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
-
-
-# Expor a porta que a aplicação vai rodar
-EXPOSE 8000
-
-# Comando para rodar a aplicação
-ENTRYPOINT ["java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
