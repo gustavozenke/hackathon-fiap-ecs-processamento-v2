@@ -16,12 +16,6 @@ variable "container_name" {
   default     = "container-hackathon-fiap-processamento-video"
 }
 
-variable "image" {
-  description = "Imagem do container"
-  type        = string
-  default     = "gustavozenke/hackathon-fiap-processamento-video:latest"
-}
-
 variable "cpu" {
   description = "CPU para a task"
   type        = number
@@ -51,4 +45,10 @@ variable "security_groups" {
   description = "Lista de security groups"
   type        = list(string)
   default     = ["sg-0708538b995a2467c"]
+}
+
+variable "image_tag" {
+  description = "Tag da imagem docker hub"
+  type        = string
+  default     = "tag"
 }

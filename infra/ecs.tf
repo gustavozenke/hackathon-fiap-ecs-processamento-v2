@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions = jsonencode([
     {
       name  = var.container_name
-      image = var.image
+      image = "gustavozenke/hackathon-fiap-processamento-video:${var.image_tag}"
       essential = true
 
       logConfiguration = {
