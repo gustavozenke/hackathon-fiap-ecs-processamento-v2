@@ -21,7 +21,7 @@ public class FFmpegVideoProcessor {
         var outputPattern = diretorioSaida.resolve(nomeVideo+"-frame_%04d.png").toString();
         var processBuilder = new ProcessBuilder(
                 "ffmpeg", "-i", diretorioVideo.toString(),
-                "-vf", "fps=1/20", outputPattern,
+                "-vf", String.format("fps=1/%d", intervalSeconds), outputPattern,
                 "-hide_banner", "-loglevel", "error"
         );
 

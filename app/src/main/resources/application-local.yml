@@ -8,8 +8,6 @@ spring:
 
 aws:
   region: ${AWS_REGION:us-east-1}
-  accessKey: ${AWS_ACCESS_KEY_ID:}
-  secretKey: ${AWS_SECRET_ACCESS_KEY:}
 
 server:
   port: 8000
@@ -20,11 +18,15 @@ management:
       exposure:
         include: health
 
-
 sqs:
-  queue: sqs-processamento
+  queue-processamento-name: sqs-inicio-processamento
+  queue-status-url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-gravar-status-processamento
+
+video:
+  destination-path: C:/Users/Public/fiap_videos
 
 bucket:
-  name: bucket-hackathon-fiap-raw-videos
-  destination:
-    path: C:/Users/Public/fiap_videos
+  processamento:
+    name: bucket-hackathon-fiap-raw-videos
+  frames:
+    name: bucket-hackathon-fiap-zipped-frames

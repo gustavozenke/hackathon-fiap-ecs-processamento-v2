@@ -15,13 +15,14 @@ public class SqsListenerAdatper {
 
     private final ProcessarVideoUseCase processarVideoUseCase;
 
-    @SqsListener(value = "${sqs.queue}")
+    @SqsListener(value = "${sqs.queue-processamento-name}")
     public void onMessage(String message) {
         try {
             log.info("Iniciando processamento");
             VideoEvent event = new ObjectMapper().readValue(message, VideoEvent.class);
             log.info("Evento recebido: {}", event);
             processarVideoUseCase.execute(event);
+            log.info("Processamento concluido com sucesso");
         } catch (Exception e) {
             log.error("Erro ao processar mensagem SQS", e);
         }
