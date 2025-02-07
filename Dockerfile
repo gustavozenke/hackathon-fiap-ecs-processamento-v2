@@ -1,6 +1,8 @@
 FROM maven:3.8.6-eclipse-temurin-17 AS build
 
-COPY . .
+WORKDIR /app
+
+COPY app/ ./
 
 RUN chmod +x mvnw || true
 
