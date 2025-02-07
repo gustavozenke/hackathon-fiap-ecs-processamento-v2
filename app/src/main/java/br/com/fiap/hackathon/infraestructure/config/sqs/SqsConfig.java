@@ -15,17 +15,8 @@ public class SqsConfig {
     private String accessKey;
     @Value("${aws.secretKey}")
     private String secretKey;
-    @Bean
-    @Profile("!local")
-    public SqsAsyncClient sqsAsyncClient() {
-        return SqsAsyncClient.builder()
-                .region(Region.US_EAST_1)
-                .credentialsProvider(AnonymousCredentialsProvider.create())
-                .build();
-    }
 
     @Bean
-    @Profile("local")
     public SqsAsyncClient sqsAsyncClientLocal() {
         return SqsAsyncClient.builder()
                 .region(Region.US_EAST_1)
