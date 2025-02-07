@@ -18,9 +18,12 @@ public class SqsConfig {
 
     @Bean
     public SqsAsyncClient sqsAsyncClientLocal() {
-        return SqsAsyncClient.builder()
+        System.out.println("iniciando bean configuracao sqs");
+        var client = SqsAsyncClient.builder()
                 .region(Region.US_EAST_1)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
+        System.out.println("bean sqs configurado com sucesso");
+        return client;
     }
 }
