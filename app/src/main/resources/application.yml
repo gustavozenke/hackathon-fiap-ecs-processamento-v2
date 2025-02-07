@@ -28,14 +28,3 @@ bucket:
   name: bucket-hackathon-fiap-raw-videos
   destination:
     path: /tmp
-
-logging:
-  level:
-    com:
-      amazonaws: DEBUG
-    org:
-      springframework:
-        cloud:
-          aws:
-            messaging:
-              listener: INFO, DEBUG
