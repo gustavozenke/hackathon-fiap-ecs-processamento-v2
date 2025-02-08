@@ -24,10 +24,10 @@ resource "aws_ecs_task_definition" "task" {
 
       healthCheck = {
         command     = ["CMD-SHELL", "curl -f http://localhost:8000/actuator/health || exit 1"]
-        interval    = 30
-        timeout     = 10
+        interval    = 5
+        timeout     = 5
         retries     = 3
-        startPeriod = 60
+        startPeriod = 20
       }
 
       portMappings = [
