@@ -10,22 +10,11 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
 @Slf4j
-public class FileUtils {
-    public static String removeExtensao(String fileName) {
-        if (fileName == null || fileName.isEmpty())
-            return fileName;
-
-        int lastDotIndex = fileName.lastIndexOf(".");
-
-        if (lastDotIndex == -1)
-            return fileName;
-
-        return fileName.substring(0, lastDotIndex);
-    }
+public class PathUtils {
 
     public static void deleteDiretorioFrames(Path diretorioFrames) throws IOException {
         if (Files.exists(diretorioFrames) && Files.isDirectory(diretorioFrames)) {
-            log.info("Deletando diretorio frames: {}", diretorioFrames);
+            log.info("Deletando diretorio de frames: {}", diretorioFrames);
             Files.walkFileTree(diretorioFrames, new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -42,10 +31,10 @@ public class FileUtils {
         }
     }
 
-    public static void deleteVideo(Path diretorioVideo) throws IOException {
-        if (Files.exists(diretorioVideo) && Files.isRegularFile(diretorioVideo)) {
-            log.info("Deletando video: {}", diretorioVideo);
-            Files.delete(diretorioVideo);
+    public static void deleteVideo(Path pathVideo) throws IOException {
+        if (Files.exists(pathVideo) && Files.isRegularFile(pathVideo)) {
+            log.info("Deletando video: {}", pathVideo.getFileName());
+            Files.delete(pathVideo);
         }
     }
 }

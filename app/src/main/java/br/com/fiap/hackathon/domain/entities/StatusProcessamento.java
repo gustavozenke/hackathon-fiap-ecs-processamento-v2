@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class SqsStatusProcessamento {
+public class StatusProcessamento {
     @JsonProperty("nome_video")
     private String nomeVideo;
     @JsonProperty("nome_usuario")

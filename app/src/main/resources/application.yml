@@ -19,8 +19,12 @@ management:
         include: health
 
 sqs:
-  queue-processamento-name: sqs-processamento
-  queue-status-url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-gravar-status-processamento
+  queue-processamento:
+    name: sqs-processamento
+  queue-status-processamento:
+    url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-gravar-status-processamento
+  queue-comunicacao-cliente:
+    url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-comunicacao-cliente
 
 video:
   destination-path: /tmp
