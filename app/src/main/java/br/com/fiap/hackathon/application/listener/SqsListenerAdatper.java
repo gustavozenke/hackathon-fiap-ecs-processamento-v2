@@ -1,7 +1,8 @@
 package br.com.fiap.hackathon.application.listener;
 
-import br.com.fiap.hackathon.application.usecases.ProcessarVideoUseCase;
-import br.com.fiap.hackathon.domain.entities.VideoEvent;
+import br.com.fiap.hackathon.application.interfaces.ProcessarVideoInterface;
+import br.com.fiap.hackathon.application.interfaces.SqsListenerInterface;
+import br.com.fiap.hackathon.domain.entities.EventoVideo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.awspring.cloud.sqs.annotation.SqsListener;
 import lombok.RequiredArgsConstructor;
@@ -11,17 +12,18 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class SqsListenerAdatper {
+public class SqsListenerAdatper implements SqsListenerInterface {
 
-    private final ProcessarVideoUseCase processarVideoUseCase;
+    private final ProcessarVideoInterface processarVideoFacade;
 
-    @SqsListener(value = "${sqs.queue-processamento-name}")
+    @Override
+    @SqsListener(value = "${sqs.queue-processamento.name}")
     public void onMessage(String message) {
         try {
             log.info("Iniciando processamento");
-            VideoEvent event = new ObjectMapper().readValue(message, VideoEvent.class);
+            EventoVideo event = new ObjectMapper().readValue(message, EventoVideo.class);
             log.info("Evento recebido: {}", event);
-            processarVideoUseCase.execute(event);
+            processarVideoFacade.execute(event);
             log.info("Processamento concluido com sucesso");
         } catch (Exception e) {
             log.error("Erro ao processar mensagem SQS", e);
