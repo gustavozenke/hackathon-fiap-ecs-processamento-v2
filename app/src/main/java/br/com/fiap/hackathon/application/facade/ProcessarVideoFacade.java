@@ -59,7 +59,7 @@ public class ProcessarVideoFacade implements ProcessarVideoInterface {
             deleteDiretorioFrames(diretorioFrames);
             deleteVideo(pathVideo);
 
-            var mensagem = String.format("O processamento do video %s foi finalizado com sucesso. Link para Donwload: %s", event.getNomeVideo(), url);
+            var mensagem = String.format("O processamento do video %s foi finalizado com sucesso!", event.getNomeVideo());
             enviarComunicacaoCliente.notificar(event.getNomeVideo(), event.getNomeUsuario(), false, mensagem);
         } catch (Exception exception){
             log.error("Um erro ocorreu durante o processamento do video: {}", exception.toString());
