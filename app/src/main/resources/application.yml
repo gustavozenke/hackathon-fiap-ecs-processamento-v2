@@ -25,7 +25,7 @@ sqs:
     url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-gravar-status-processamento
   queue-comunicacao-cliente:
     url: https://sqs.us-east-1.amazonaws.com/369780787289/sqs-comunicacao-cliente
-    tipo-comunicacao: email
+    tipo-comunicacao: sms
 
 video:
   destination-path: /tmp
