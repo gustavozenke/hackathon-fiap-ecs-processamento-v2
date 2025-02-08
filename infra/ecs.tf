@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "task" {
         interval    = 5
         timeout     = 5
         retries     = 3
-        startPeriod = 20
+        startPeriod = 60
       }
 
       portMappings = [
