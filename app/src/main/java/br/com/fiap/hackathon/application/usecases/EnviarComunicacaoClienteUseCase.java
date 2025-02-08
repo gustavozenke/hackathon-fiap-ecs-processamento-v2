@@ -1,9 +1,10 @@
 package br.com.fiap.hackathon.application.usecases;
 
 import br.com.fiap.hackathon.application.interfaces.EnviarComunicacaoClienteInterface;
+import br.com.fiap.hackathon.application.interfaces.SqsRepositoryInterface;
 import br.com.fiap.hackathon.domain.entities.NotificacaoCliente;
+import br.com.fiap.hackathon.domain.entities.enums.TipoComunicacao;
 import br.com.fiap.hackathon.domain.exceptions.GravarEventoProcessamentoException;
-import br.com.fiap.hackathon.infraestructure.repository.sqs.SqsRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +17,11 @@ import org.springframework.stereotype.Component;
 public class EnviarComunicacaoClienteUseCase implements EnviarComunicacaoClienteInterface {
 
     private final ObjectMapper objectMapper;
-    private final SqsRepository sqsRepository;
+    private final SqsRepositoryInterface sqsRepository;
     @Value("${sqs.queue-comunicacao-cliente.url}")
     private String queueUrl;
+    @Value("${sqs.queue-comunicacao-cliente.tipo-comunicacao}")
+    private String tipoComunicacao;
 
     @Override
     public void notificar(String nomeVideo, String nomeUsuario, boolean comunicacaoErro, String mensagem) {
@@ -28,6 +31,7 @@ public class EnviarComunicacaoClienteUseCase implements EnviarComunicacaoCliente
                     .nomeUsuario(nomeUsuario)
                     .comunicacaoErro(comunicacaoErro)
                     .mensagem(mensagem)
+                    .tipoComunicacao(TipoComunicacao.fromString(tipoComunicacao))
                     .build();
             var messageBody = objectMapper.writeValueAsString(payload);
             sqsRepository.send(queueUrl, messageBody);

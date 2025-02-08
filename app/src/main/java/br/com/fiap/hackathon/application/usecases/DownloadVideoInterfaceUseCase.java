@@ -1,8 +1,8 @@
 package br.com.fiap.hackathon.application.usecases;
 
 import br.com.fiap.hackathon.application.interfaces.DownloadVideoInterface;
+import br.com.fiap.hackathon.application.interfaces.S3RepositoryInterface;
 import br.com.fiap.hackathon.domain.exceptions.DownloadVideoException;
-import br.com.fiap.hackathon.infraestructure.repository.s3.S3Repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 @RequiredArgsConstructor
 public class DownloadVideoInterfaceUseCase implements DownloadVideoInterface {
 
-    private final S3Repository s3Repository;
+    private final S3RepositoryInterface s3Repository;
     @Value("${bucket.processamento.name}")
     private String bucketProcessamentoName;
     @Value("${video.destination-path}")

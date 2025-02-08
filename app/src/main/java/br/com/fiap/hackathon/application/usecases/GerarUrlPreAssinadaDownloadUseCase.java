@@ -1,8 +1,8 @@
 package br.com.fiap.hackathon.application.usecases;
 
 import br.com.fiap.hackathon.application.interfaces.GerarUrlPreAssinadaDownloadInterface;
+import br.com.fiap.hackathon.application.interfaces.S3RepositoryInterface;
 import br.com.fiap.hackathon.domain.exceptions.GerarUrlPreAssinadaDownloadException;
-import br.com.fiap.hackathon.infraestructure.repository.s3.S3Repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GerarUrlPreAssinadaDownloadUseCase implements GerarUrlPreAssinadaDownloadInterface {
 
-    private final S3Repository s3Repository;
+    private final S3RepositoryInterface s3Repository;
 
     @Override
     public String gerarUrlPreAssinada(String key) {
