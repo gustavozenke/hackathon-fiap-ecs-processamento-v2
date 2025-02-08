@@ -27,19 +27,19 @@ public class ProcessarVideoFacade implements ProcessarVideoInterface {
     @Override
     public void execute(EventoVideo event) {
         try {
-            gravarEventoProcessamento.gravarEventoProcessamento(
-                    event.getNomeVideo(),
-                    event.getNomeUsuario(),
-                    StatusProcessamento.PROCESSAMENTO_INICIADO.name(),
-                    null);
+//            gravarEventoProcessamento.gravarEventoProcessamento(
+//                    event.getNomeVideo(),
+//                    event.getNomeUsuario(),
+//                    StatusProcessamento.PROCESSAMENTO_INICIADO.name(),
+//                    null);
 
             var pathVideo = downloadVideo.download(event.getNomeVideo());
 
-            gravarEventoProcessamento.gravarEventoProcessamento(
-                    event.getNomeVideo(),
-                    event.getNomeUsuario(),
-                    StatusProcessamento.PROCESSAMENTO_EM_ANDAMENTO.name(),
-                    null);
+//            gravarEventoProcessamento.gravarEventoProcessamento(
+//                    event.getNomeVideo(),
+//                    event.getNomeUsuario(),
+//                    StatusProcessamento.PROCESSAMENTO_EM_ANDAMENTO.name(),
+//                    null);
 
             String nomeSemExtensao = toNomeSemExtensao(pathVideo.getFileName().toString());
             var diretorioFrames = pathVideo.getParent().resolve(String.format("frames-%s", nomeSemExtensao));
@@ -48,7 +48,7 @@ public class ProcessarVideoFacade implements ProcessarVideoInterface {
             var pathArquivoZip = zipImagens.zipImagens(diretorioFrames, nomeSemExtensao);
             uploadZipFrames.upload(pathArquivoZip);
 
-            var url = gerarUrlPreAssinadaDownload.gerarUrlPreAssinada(nomeSemExtensao);
+            var url = gerarUrlPreAssinadaDownload.gerarUrlPreAssinada(pathArquivoZip.getFileName().toString());
 
             gravarEventoProcessamento.gravarEventoProcessamento(
                     event.getNomeVideo(),
