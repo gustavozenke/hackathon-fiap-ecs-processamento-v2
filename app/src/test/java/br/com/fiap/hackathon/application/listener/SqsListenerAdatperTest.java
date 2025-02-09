@@ -25,7 +25,7 @@ public class SqsListenerAdatperTest {
     @Test
     void deveProcessarMensagemComSucesso() {
         // Arrange
-        String mensagem = "{'nome_video': 'teste', 'nome_usuario': 'usuario teste'}";
+        String mensagem = "{\"nome_video\": \"teste\", \"nome_usuario\": \"usuario teste\"}";
 
         doNothing().when(processarVideoFacade).execute(any(EventoVideo.class));
 
@@ -33,7 +33,7 @@ public class SqsListenerAdatperTest {
         sqsListenerAdatper.onMessage(mensagem);
 
         // Assert
-        verify(processarVideoFacade, times(0)).execute(any(EventoVideo.class));
+        verify(processarVideoFacade, times(1)).execute(any(EventoVideo.class));
     }
 
     @Test
