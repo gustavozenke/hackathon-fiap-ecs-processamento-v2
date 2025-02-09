@@ -1,6 +1,6 @@
 package br.com.fiap.hackathon.application.processor;
 
-import br.com.fiap.hackathon.application.interfaces.VideoProcessorInterface;
+import br.com.fiap.hackathon.domain.interfaces.VideoProcessorInterface;
 import br.com.fiap.hackathon.domain.exceptions.ExtrairFramesException;
 import br.com.fiap.hackathon.domain.exceptions.FFmpegVideoProcessorException;
 import lombok.extern.slf4j.Slf4j;

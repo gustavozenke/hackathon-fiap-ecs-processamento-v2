@@ -1,6 +1,6 @@
 package br.com.fiap.hackathon.application.usecases;
 
-import br.com.fiap.hackathon.application.interfaces.ZipImagemInterface;
+import br.com.fiap.hackathon.domain.interfaces.ZipImagemInterface;
 import br.com.fiap.hackathon.domain.exceptions.ZipImagemException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
