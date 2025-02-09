@@ -34,7 +34,6 @@ jobs:
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.verbose=true \
             -Dsonar.junit.reportPaths=target/test-classes \
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
 
   push-to-registry:
     name: Push Docker Image
