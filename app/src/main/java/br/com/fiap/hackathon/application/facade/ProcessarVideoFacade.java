@@ -1,8 +1,8 @@
 package br.com.fiap.hackathon.application.facade;
 
-import br.com.fiap.hackathon.application.interfaces.*;
 import br.com.fiap.hackathon.domain.entities.EventoVideo;
 import br.com.fiap.hackathon.domain.entities.enums.StatusProcessamento;
+import br.com.fiap.hackathon.domain.interfaces.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

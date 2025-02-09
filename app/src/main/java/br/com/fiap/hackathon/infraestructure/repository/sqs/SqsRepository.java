@@ -1,6 +1,6 @@
 package br.com.fiap.hackathon.infraestructure.repository.sqs;
 
-import br.com.fiap.hackathon.application.interfaces.SqsRepositoryInterface;
+import br.com.fiap.hackathon.domain.interfaces.SqsRepositoryInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

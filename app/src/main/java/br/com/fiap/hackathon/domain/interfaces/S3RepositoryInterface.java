@@ -1,4 +1,4 @@
-package br.com.fiap.hackathon.application.interfaces;
+package br.com.fiap.hackathon.domain.interfaces;
 
 import java.net.URL;
 import java.nio.file.Path;

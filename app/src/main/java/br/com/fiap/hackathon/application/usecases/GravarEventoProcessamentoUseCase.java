@@ -1,7 +1,7 @@
 package br.com.fiap.hackathon.application.usecases;
 
-import br.com.fiap.hackathon.application.interfaces.GravarEventoProcessamentoInterface;
-import br.com.fiap.hackathon.application.interfaces.SqsRepositoryInterface;
+import br.com.fiap.hackathon.domain.interfaces.GravarEventoProcessamentoInterface;
+import br.com.fiap.hackathon.domain.interfaces.SqsRepositoryInterface;
 import br.com.fiap.hackathon.domain.entities.StatusProcessamento;
 import br.com.fiap.hackathon.domain.exceptions.GravarEventoProcessamentoException;
 import com.fasterxml.jackson.databind.ObjectMapper;

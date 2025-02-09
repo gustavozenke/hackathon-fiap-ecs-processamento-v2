@@ -1,4 +1,4 @@
-package br.com.fiap.hackathon.application.interfaces;
+package br.com.fiap.hackathon.domain.interfaces;
 
 import br.com.fiap.hackathon.domain.entities.EventoVideo;
 

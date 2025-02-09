@@ -1,7 +1,7 @@
 package br.com.fiap.hackathon.application.usecases;
 
-import br.com.fiap.hackathon.application.interfaces.EnviarComunicacaoClienteInterface;
-import br.com.fiap.hackathon.application.interfaces.SqsRepositoryInterface;
+import br.com.fiap.hackathon.domain.interfaces.EnviarComunicacaoClienteInterface;
+import br.com.fiap.hackathon.domain.interfaces.SqsRepositoryInterface;
 import br.com.fiap.hackathon.domain.entities.NotificacaoCliente;
 import br.com.fiap.hackathon.domain.entities.enums.TipoComunicacao;
 import br.com.fiap.hackathon.domain.exceptions.GravarEventoProcessamentoException;

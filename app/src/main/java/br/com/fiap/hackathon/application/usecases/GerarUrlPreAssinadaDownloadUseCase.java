@@ -1,7 +1,7 @@
 package br.com.fiap.hackathon.application.usecases;
 
-import br.com.fiap.hackathon.application.interfaces.GerarUrlPreAssinadaDownloadInterface;
-import br.com.fiap.hackathon.application.interfaces.S3RepositoryInterface;
+import br.com.fiap.hackathon.domain.interfaces.GerarUrlPreAssinadaDownloadInterface;
+import br.com.fiap.hackathon.domain.interfaces.S3RepositoryInterface;
 import br.com.fiap.hackathon.domain.exceptions.GerarUrlPreAssinadaDownloadException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

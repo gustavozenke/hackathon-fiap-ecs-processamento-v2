@@ -1,6 +1,6 @@
 package br.com.fiap.hackathon.infraestructure.repository.s3;
 
-import br.com.fiap.hackathon.application.interfaces.S3RepositoryInterface;
+import br.com.fiap.hackathon.domain.interfaces.S3RepositoryInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
