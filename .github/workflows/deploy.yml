@@ -31,9 +31,6 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      - name: Navigate to correct directory (if needed)
-        run: cd app/
-
       - name: Cache Maven packages
         uses: actions/cache@v4
         with:
@@ -44,9 +41,9 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        working-directory: .app/
         run: |
-          mvn clean verify sonar:sonar -e -X \
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
+          mvn clean verify sonar:sonar \
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
             -Dsonar.organization=${{ secrets.SONAR_ORG }} \
             -Dsonar.host.url=https://sonarcloud.io \
