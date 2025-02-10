@@ -29,7 +29,7 @@ class EnviarComunicacaoClienteUseCaseTest {
     }
 
     @Test
-    void deveNotificarComSucesso() throws Exception {
+    void deveNotificarComSucesso() {
         // Arrange
         String nomeVideo = "video.mp4";
         String nomeUsuario = "usuario123";
@@ -45,7 +45,7 @@ class EnviarComunicacaoClienteUseCaseTest {
     }
 
     @Test
-    void deveLancarExcecaoQuandoFalharAoSerializar() throws Exception {
+    void deveLancarExcecaoQuandoFalharAoSerializar() {
         doThrow(new RuntimeException("Erro ao enviar para SQS")).when(sqsRepository).send(any(), any());
 
         assertThrows(GravarEventoProcessamentoException.class, () ->
