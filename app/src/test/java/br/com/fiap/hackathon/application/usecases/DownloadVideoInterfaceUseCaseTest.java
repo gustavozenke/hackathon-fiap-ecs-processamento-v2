@@ -36,7 +36,7 @@ class DownloadVideoInterfaceUseCaseTest {
     }
 
     @Test
-    void testDownload_Success() {
+    void deveRealizarDownloadComSucesso() {
         // Arrange
         doNothing().when(s3Repository).download(videoKey, expectedVideoPath);
 
@@ -50,7 +50,7 @@ class DownloadVideoInterfaceUseCaseTest {
     }
 
     @Test
-    void testDownload_Failure() {
+    void deveFalharAoTentarRealizarDownload() {
         // Arrange
         doThrow(new RuntimeException("Erro de download"))
                 .when(s3Repository).download(videoKey, expectedVideoPath);
