@@ -25,13 +25,13 @@ class DownloadVideoInterfaceUseCaseTest {
     @BeforeEach
     void setUp() {
         videoKey = "video.mp4";
-        String diretorioDestino = "/tmp";
+        String diretorioDestino = "diretorio/temp";
         expectedVideoPath = Paths.get(diretorioDestino, videoKey);
 
         s3Repository = mock(S3Repository.class);
         downloadVideoUseCase = new DownloadVideoInterfaceUseCase(s3Repository);
 
-        ReflectionTestUtils.setField(downloadVideoUseCase, "diretorioDestino", "\\tmp");
+        ReflectionTestUtils.setField(downloadVideoUseCase, "diretorioDestino", "diretorio/temp");
         ReflectionTestUtils.setField(downloadVideoUseCase, "bucketProcessamentoName", "nome-bucket-teste");
     }
 
